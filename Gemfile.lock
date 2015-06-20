@@ -87,5 +87,8 @@ PLATFORMS
 DEPENDENCIES
   jekyll
   jekyll-sitemap
+  listen
   octopress (~> 3.0.0.rc.12)
+  pygments.rb
+  redcarpet
   rouge

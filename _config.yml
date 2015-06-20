@@ -1,9 +1,9 @@
 # Site wide configuration
 
-title: Site Title
+title: Boulder Code&&Coffee
 locale: en_US
-description: Describe your website here.
-logo: site-logo.png
+description: A developer co-working and networking group
+logo: site-logo.jpg
 search: true
 url: http://localhost:4000
 
@@ -31,19 +31,19 @@ exclude: ["lib", "config.rb", "Capfile", "config", "log", "Rakefile", "Rakefile.
 
 # Site owner
 owner:
-  name: Your Name
-  avatar: bio-photo.jpg
-  email: you@email.com
-  disqus-shortname:
-  twitter: #username
+  name: Boulder Code&&Coffee
+  avatar: site-logo.jpg
+  email: fred@bouldercoden.coffee
+  disqus-shortname: fredjean
+  twitter: codencoffee
   facebook: #username
-  github: #username
+  github: bouldercodencoffee
   stackexchange: #http://stackoverflow.com/users/123456/username
-  linkedin: #username
-  instagram: #username
+  linkedin: #fredjean
+  instagram: #freddyjean
   flickr: #username
   tumblr: #username
-  pinterest: #username
+  pinterest: #freddyjean
   weibo: #userid
   google:
     plus: #username
