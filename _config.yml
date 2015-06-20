@@ -5,7 +5,7 @@ locale: en_US
 description: A developer co-working and networking group
 logo: site-logo.jpg
 search: true
-url: http://localhost:4000
+url: https://bouldercodencoffee.github.io
 
 # Jekyll configuration
 
