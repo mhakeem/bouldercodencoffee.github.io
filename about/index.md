@@ -10,5 +10,6 @@ Cup](http://thecupboulder.com) once a week. It soon outgrew it's original
 meeting place, met at [dojo4](http://dojo4.com) for a few years and hung out at
 [GitHub Boulder](http://github.com) for a while.
 
-The group is now back at its root as it is meeting every Wednesday mornings
-between 9 and noon at The Cup.
+After a brief exile at [The Cup](http://www.thecupboulder.com/), we are
+returning to [dojo4](http://dojo4.com) starting on July 8th.
+
