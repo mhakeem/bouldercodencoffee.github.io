@@ -12,7 +12,7 @@ draft: true
 ---
 
 I have many fond memories of working and hanging out at Dojo4. These
-memories include posting "Over Heard" tweets graciously provided by
+memories include posting "Over Heard" tweets graciously uttered by
 Garett, shipping code and horseradish bacon cream cheese.
 
 You see, the Code&&Coffee group use to meet at Dojo4 for their weekly
