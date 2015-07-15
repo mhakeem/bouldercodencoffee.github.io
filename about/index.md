@@ -11,5 +11,5 @@ meeting place, met at [dojo4](http://dojo4.com) for a few years and hung out at
 [GitHub Boulder](http://github.com) for a while.
 
 After a brief exile at [The Cup](http://www.thecupboulder.com/), we are
-returning to [dojo4](http://dojo4.com) starting on July 8th.
+now meeting at [dojo4](http://dojo4.com) every Wednesday from 9AM to noon.
 
