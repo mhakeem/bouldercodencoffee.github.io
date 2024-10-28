@@ -1,24 +1,20 @@
 {
-  "name": "so-simple-theme",
-  "author": "Michael Rose <michael@mademistakes.com>",
-  "homepage": "http://mmistakes.github.io/so-simple-theme/",
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/mmistakes/so-simple-theme.git"
-  },
-  "bugs": {
-    "url": "https://github.com/mmistakes/so-simple-theme/issues"
-  },
-  "engines": {
-    "node": ">= 0.10.0"
+  "name": "bouldercodencoffee.github.io",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "esbuild": "node esbuild.config.js --minify",
+    "esbuild-dev": "node esbuild.config.js --watch"
   },
   "devDependencies": {
-    "grunt": "~0.4.1",
-    "grunt-contrib-clean": "~0.5.0",
-    "grunt-contrib-jshint": "~0.6.3",
-    "grunt-contrib-uglify": "~0.2.2",
-    "grunt-contrib-watch": "~0.5.2",
-    "grunt-contrib-imagemin": "~0.2.0",
-    "grunt-svgmin": "~0.2.0"
+    "esbuild": "^0.19.2",
+    "glob": "^10.3.3",
+    "postcss": "^8.4.29",
+    "postcss-flexbugs-fixes": "^5.0.2",
+    "postcss-import": "^15.1.0",
+    "postcss-load-config": "^4.0.1",
+    "postcss-preset-env": "^9.1.2",
+    "read-cache": "^1.0.0",
+    "tailwindcss": "^3.4.14"
   }
 }
