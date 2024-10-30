@@ -3,10 +3,10 @@
   <head>
     <%= render "head", metadata: site.metadata, title: data.title %>
   </head>
-  <body class="<%= data.layout %> <%= data.page_class %>">
+  <body class="min-h-screen bg-gray-50 flex flex-col font-sans">
     <%= render Shared::Navbar.new(metadata: site.metadata, resource: resource) %>
 
-    <main>
+    <main class="flex-grow">
       <%= yield %>
     </main>
 
