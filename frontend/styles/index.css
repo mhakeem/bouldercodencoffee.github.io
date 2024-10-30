@@ -1,6 +1,7 @@
 /* If you need to add @import statements, do so up here */
 
 @import "jit-refresh.css"; /* triggers frontend rebuilds */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Montserrat:wght@700&display=swap');
 
 /* Set up Tailwind imports */
 @tailwind base;
