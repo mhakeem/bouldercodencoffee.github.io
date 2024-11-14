@@ -1,0 +1,39 @@
+---
+layout: default
+---
+
+<article class="max-w-3xl mx-auto p-5 mt-4">
+  <header class="mb-6">
+    <h1 class="text-3xl font-bold font-display mb-2 text-coffee"><%= data.title %></h1>
+    <p class="text-gray-600 text-sm">
+      <span>By <%= data.author %></span> | <span><%= data.date.strftime("%B %d, %Y") %></span>
+    </p>
+  </header>
+
+  <div class="mb-3">
+    <h3 class="text-xl font-bold">When && Where</h3>
+  </div>
+
+  <div class="mb-2">
+    <i class="far fa-calendar text-xl mr-4 text-code inline-block"></i>
+    <span class="text-lg"><%= data.meeting_date.strftime("%B %d, %Y") %></span>
+  </div>
+  <div class="mb-2">
+    <i class="far fa-clock text-xl mr-4 text-code inline-block"></i>
+    <span class="text-lg"><%= data.meeting_date.strftime("%l:%M %p") %> until whenever</span>
+  </div>
+  <div class="mb-6">
+    <i class="fas fa-map-marker-alt text-xl mr-4 text-code inline-block"></i>
+    <span class="text-lg"><%= data.location %></span>
+  </div>
+
+  <hr class="h-px my-4 bg-gray-200 border-0 dark:bg-coffee-light">
+
+  <div class="prose lg:prose-lg md:prose-base prose-a:text-coffee hover:prose-a:text-code prose-a:transition prose-a:duration-300">
+    <%= yield %>
+  </div>
+
+  <footer class="mt-10">
+    <p class="text-gray-600 text-sm">Tags: <%= data.categories.join(", ") %></p>
+  </footer>
+</article>
