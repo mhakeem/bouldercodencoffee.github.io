@@ -1,0 +1,17 @@
+---
+layout: page
+title: Events
+---
+
+<ul>
+  <% collections.events.resources.each do |event| %>
+    <li>
+      <div class="mb-0"><a class="no-underline text-lg" href="<%= event.relative_url %>"><%= event.data.title %></a></div>
+      <div class="-mt-2">
+        <span class="text-gray-600 text-xs">Posted on <%= event.date.strftime("%B %d, %Y") %></span>
+      </div>
+    </li>
+  <% end %>
+</ul>
+
+<!--If you have a lot of events, you may want to consider adding [pagination](https://www.bridgetownrb.com/docs/content/pagination)!-->

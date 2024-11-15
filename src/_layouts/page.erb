@@ -2,6 +2,9 @@
 layout: default
 ---
 
-<h1><%= data.title %></h1>
-
-<%= yield %>
+<div class="container max-w-3xl mx-auto p-5 mt-4">
+  <h1 class="text-3xl font-bold font-display mb-2 text-coffee"><%= data.title %></h1>
+  <div class="prose lg:prose-lg md:prose-base prose-a:text-coffee hover:prose-a:text-code prose-a:transition prose-a:duration-300">
+    <%= yield %>
+  </div>
+</div>
