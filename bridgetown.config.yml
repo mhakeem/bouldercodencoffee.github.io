@@ -35,6 +35,11 @@ collections:
     permalink: pretty
     future: true
 
+# rss
+feed:
+  collections:
+    - events
+
 timezone: America/Denver
 # pagination:
 #   enabled: true
