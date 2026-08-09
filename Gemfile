@@ -36,3 +36,21 @@ gem "puma", "< 7"
 # gem "nokolexbor", "~> 0.4"
 
 gem "bridgetown-feed", "~> 3.1"
+
+# Used by script/ automation (event generation + social media posting), not the site itself
+gem "icalendar", "~> 2.10"
+gem "mastodon-api", "~> 2.0"
+gem "slack-ruby-client", "~> 2.4"
+gem "tzinfo", "~> 2.0"
+
+group :development do
+  gem "solargraph", "~> 0.51.2"
+  gem "standard", "~> 1.45"
+  gem "erb_lint", "~> 0.9.0"
+end
+
+group :test do
+  gem "minitest", "~> 5.25"
+  gem "minitest-reporters", "~> 1.8"
+  gem "webmock", "~> 3.25"
+end
