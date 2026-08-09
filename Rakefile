@@ -49,3 +49,14 @@ end
 #     say_status :rake, "I'm a Rake tast =) #{site.config.url}"
 #   end
 # end
+
+require "minitest/test_task"
+
+# Minitest suite for script/ (event generation + social media posting
+# automation). Named `spec` rather than `test` to avoid colliding with
+# Bridgetown's own `rake test` task above.
+Minitest::TestTask.create(:spec) do |t|
+  t.libs << "test"
+  t.warning = false
+  t.test_globs = ["test/**/*_test.rb"]
+end
