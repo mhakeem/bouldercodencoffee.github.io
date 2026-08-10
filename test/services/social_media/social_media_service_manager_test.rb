@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require_relative "../../test_helper"
-require_relative "../../../script/services/social_media_service/social_media_service_manager"
+require_relative "../../../script/services/social_media/social_media_service_manager"
 
 class SocialMediaServiceManagerTest < Minitest::Test
   RecordingService = Struct.new(:posts) do

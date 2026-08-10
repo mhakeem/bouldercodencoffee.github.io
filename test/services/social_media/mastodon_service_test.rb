@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require_relative "../../test_helper"
-require_relative "../../../script/services/social_media_service/mastodon_service"
+require_relative "../../../script/services/social_media/mastodon_service"
 
 class MastodonServiceTest < Minitest::Test
   STATUSES_URL = "https://mastodon.example/api/v1/statuses"

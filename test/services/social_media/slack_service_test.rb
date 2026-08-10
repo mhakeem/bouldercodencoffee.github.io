@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require_relative "../../test_helper"
-require_relative "../../../script/services/social_media_service/slack_service"
+require_relative "../../../script/services/social_media/slack_service"
 
 class SlackServiceTest < Minitest::Test
   POST_MESSAGE_URL = "https://slack.com/api/chat.postMessage"
