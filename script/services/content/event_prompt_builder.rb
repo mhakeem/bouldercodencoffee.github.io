@@ -73,6 +73,12 @@ class EventPromptBuilder
       Mastodon's 500 character limit, a hard rule for every use of this text, not just the social
       posts).
 
+      Formatting is as strict a rule as the character limit: separate every paragraph (the
+      announcement line, the call to action, the food truck block, the sign-off) with one
+      completely blank line, i.e. a real "\n\n" between them, exactly like the blank lines between
+      paragraphs in the examples above. Do not run paragraphs together on consecutive single-newline
+      lines, and do not use trailing spaces at the end of a line as a substitute for a blank line.
+
       If a food truck is given below, format that part as exactly two lines: "This week's food
       truck: <name> <emoji>" where <emoji> is a single emoji matching that truck's actual cuisine
       (sushi -> 🍣, tacos -> 🌮, BBQ/grill -> 🔥, pizza -> 🍕, etc.), followed by a short punchy
@@ -106,6 +112,9 @@ class EventPromptBuilder
       safety). End with a sign-off containing "🧑‍💻👩‍💻👨‍💻". No links, no hashtags. Never use an
       em dash (—) anywhere in the text; use a hyphen (-), a comma, or a new sentence instead. Plain
       text only, comfortably under Mastodon's 500 character limit.
+
+      If the message spans more than one paragraph, separate paragraphs with one completely blank
+      line (a real "\n\n"), never with trailing spaces at the end of a line.
 
       Event details:
       - Date this would have been: #{event.date}

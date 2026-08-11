@@ -19,7 +19,7 @@ class ChatCompletionsService < AiServiceBase
   # @param max_tokens [Integer]
   # @return [String] generated content
   # @raise [RequestError] on unexpected response shape
-  def generate_content(prompt, max_tokens: 1024)
+  def generate_content(prompt, max_tokens: 4096)
     headers = {"content-type" => "application/json", "authorization" => "Bearer #{api_key}"}
     payload = {model: @model, max_tokens:, messages: [{role: "user", content: prompt}]}
 
