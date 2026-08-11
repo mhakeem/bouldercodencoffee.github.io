@@ -1,0 +1,97 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//sebbo.net//ical-generator//EN
+METHOD:PUBLISH
+NAME:raybackfood
+X-WR-CALNAME:raybackfood
+BEGIN:VEVENT
+UID:c8bbd6ed-0fc9-4529-a3ff-fee8e9210b6f
+SEQUENCE:0
+DTSTAMP:20260101T000000Z
+DTSTART:20250327T140000Z
+DTEND:20250327T180000Z
+SUMMARY:Rollin in Daisies
+DESCRIPTION:Latest event details:\n\nhttps://raybackfood.eventcalendarapp.
+ com/u/52551/6cmquaq2egv7fvtfcgesjfpvo6%40google.com?repeatId=0\n\n---\n\nH
+ andmade Gluten Free Cinnamon rolls
+END:VEVENT
+BEGIN:VEVENT
+UID:e28c31b2-5dff-448f-ad39-bb727192f1e1
+SEQUENCE:0
+DTSTAMP:20260101T000000Z
+DTSTART:20250327T180000Z
+DTEND:20250327T210000Z
+SUMMARY:Arepas Caribbean
+DESCRIPTION:Latest event details:\n\nhttps://raybackfood.eventcalendarapp.
+ com/u/52551/01blebanc5o9bt5165h1so5c8l%40google.com?repeatId=0\n\n---\n\nS
+ erving Latin Caribbean fusion food!  Gluten &amp\; Dairy Free.
+END:VEVENT
+BEGIN:VEVENT
+UID:4a596c43-cf29-4bff-9764-073d71e0bbe1
+SEQUENCE:0
+DTSTAMP:20260101T000000Z
+DTSTART:20260811T180000Z
+DTEND:20260811T220000Z
+SUMMARY:Mile High Tikka Express
+DESCRIPTION:Latest event details:\n\nhttps://raybackfood.eventcalendarapp.
+ com/u/52551/7eumk4ub6v46anhm1s9h84anq1%40google.com?repeatId=0\n\n---\n\n<
+ p dir="ltr">Denver's first Indian Fusion Food Truck offering light\, hea
+ lthy and modern takes on Indian Cuisine.</p>
+END:VEVENT
+BEGIN:VEVENT
+UID:8873e156-a509-497f-9389-f978948c3751
+SEQUENCE:0
+DTSTAMP:20260101T000000Z
+DTSTART:20260806T220000Z
+DTEND:20260807T020000Z
+SUMMARY:La Rue Bayou
+DESCRIPTION:Latest event details:\n\nhttps://raybackfood.eventcalendarapp.
+ com/u/52551/7qgnlvgciv362bo6ac3tq40914%40google.com?repeatId=0\n\n---\n\nF
+ rench Creole cuisine\, featuring Crab Cakes\, French Bread Po boys\, Gumbo
+  and Beignets. A taste of New Orleans in Boulder\, Colorado.
+END:VEVENT
+BEGIN:VEVENT
+UID:synthetic-9am-truck
+SEQUENCE:0
+DTSTAMP:20260101T000000Z
+DTSTART:20260401T150000Z
+DTEND:20260401T160000Z
+SUMMARY:9am Truck
+DESCRIPTION:Synthetic fixture event for boundary testing
+END:VEVENT
+BEGIN:VEVENT
+UID:synthetic-8am-truck
+SEQUENCE:0
+DTSTAMP:20260101T000000Z
+DTSTART:20260422T140000Z
+DTEND:20260422T150000Z
+SUMMARY:8am Truck
+DESCRIPTION:Synthetic fixture event for boundary testing
+END:VEVENT
+BEGIN:VEVENT
+UID:synthetic-just-in-time
+SEQUENCE:0
+DTSTAMP:20260101T000000Z
+DTSTART:20260416T055959Z
+DTEND:20260416T065959Z
+SUMMARY:Just In Time
+DESCRIPTION:Synthetic fixture event for boundary testing
+END:VEVENT
+BEGIN:VEVENT
+UID:synthetic-too-late
+SEQUENCE:0
+DTSTAMP:20260101T000000Z
+DTSTART:20260416T060000Z
+DTEND:20260416T070000Z
+SUMMARY:Too Late
+DESCRIPTION:Synthetic fixture event for boundary testing
+END:VEVENT
+BEGIN:VEVENT
+UID:synthetic-no-description-truck
+SEQUENCE:0
+DTSTAMP:20260101T000000Z
+DTSTART:20260408T140000Z
+DTEND:20260408T150000Z
+SUMMARY:No Description Truck
+END:VEVENT
+END:VCALENDAR

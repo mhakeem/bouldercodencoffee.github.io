@@ -1,0 +1,11 @@
+---
+# Per-venue metadata used when generating an event page and, later, the
+# day-before social post. `webcal` is optional; venues without one simply
+# skip the food-truck lookup. Sanitas Brewing Company has shut down — Rayback
+# is the only venue for now, but this stays a map so adding another venue
+# later is just a new entry.
+locations:
+  The Rayback:
+    website: "https://www.therayback.com/"
+    webcal: "webcal://api.eventcalendarapp.com/widget-subscription/9891/0352139f-4e45-49e9-b48b-54c8a73ecadd"
+    wifi_notes: "WiFi doesn't support VPNs, so plan accordingly."
