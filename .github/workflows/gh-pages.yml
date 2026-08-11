@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - master
-      - feature/gh-automation-for-auto-event-generation # TODO: remove this after testing
 
 concurrency:
   group: pages
