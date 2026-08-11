@@ -12,7 +12,9 @@ layout: default
   </div>
 </div>
 
-<%= render "event", event: collections.events.resources.last %>
+<% if (upcoming_event = collections.events.resources.last) %>
+  <%= render "event", event: upcoming_event %>
+<% end %>
 
 <div class="bg-gray-100 py-16">
   <div class="container mx-auto px-4">
