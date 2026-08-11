@@ -1,0 +1,47 @@
+name: Post to socials
+
+# Runs after the site has deployed. If the deployed commit added or changed
+# an event page, posts that page's `social_post` frontmatter to Mastodon + Slack.
+
+on:
+  workflow_run:
+    workflows: ["Deploy to GitHub pages"]
+    types: [completed]
+
+permissions:
+  contents: read
+
+jobs:
+  post-to-socials:
+    if: github.event.workflow_run.conclusion == 'success'
+    runs-on: ubuntu-latest
+    env:
+      SLACK_API_TOKEN: ${{ secrets.SLACK_API_TOKEN }}
+      SLACK_CHANNELS: ${{ vars.SLACK_CHANNELS }}
+      MASTODON_API_TOKEN: ${{ secrets.MASTODON_API_TOKEN }}
+      MASTODON_BASE_URL: ${{ vars.MASTODON_BASE_URL }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.workflow_run.head_sha }}
+          fetch-depth: 2
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+
+      - name: Find changed event pages
+        id: changed
+        run: |
+          files=$(git diff --name-only HEAD~1 HEAD -- 'src/_events/*.md' || true)
+          echo "files<<EOF" >> "$GITHUB_OUTPUT"
+          echo "$files" >> "$GITHUB_OUTPUT"
+          echo "EOF" >> "$GITHUB_OUTPUT"
+
+      - name: Post to Mastodon + Slack
+        if: steps.changed.outputs.files != ''
+        run: |
+          echo "${{ steps.changed.outputs.files }}" | while IFS= read -r file; do
+            [ -n "$file" ] && ruby script/publish_social_post.rb "$file"
+          done

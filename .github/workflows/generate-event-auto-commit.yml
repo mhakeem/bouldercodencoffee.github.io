@@ -1,0 +1,48 @@
+name: Generate event (auto-commit)
+
+# Fully-automatic alternative to generate-event-pr.yml — commits the
+# generated event page (with its social_post frontmatter) straight to
+# master, which kicks off gh-pages.yml to deploy it, then post-to-socials.yml
+# posts to Mastodon + Slack once that deploy succeeds.
+
+on:
+  workflow_dispatch: {}
+  schedule:
+    - cron: "0 18 * * 2" # Tuesdays, noon MDT / 11am MST (cron can't follow DST)
+
+permissions:
+  contents: write
+
+jobs:
+  generate-event-auto-commit:
+    runs-on: ubuntu-latest
+    env:
+      AI_PROVIDER: ${{ vars.AI_PROVIDER }}
+      AI_MODEL: ${{ vars.AI_MODEL }}
+      ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+      OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+      GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+      MISTRAL_API_KEY: ${{ secrets.MISTRAL_API_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+
+      - name: Generate next event page
+        id: generate
+        run: ruby script/generate_event.rb --mode=direct
+
+      - name: Commit and push
+        if: steps.generate.outputs.event_file != ''
+        env:
+          EVENT_DATE: ${{ steps.generate.outputs.event_date }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add src/_events/*.md
+          git diff --cached --quiet && exit 0
+          git commit -m "Add upcoming event page ($EVENT_DATE)"
+          git push

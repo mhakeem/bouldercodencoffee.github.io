@@ -32,6 +32,7 @@ const build = require("./config/esbuild.defaults.js")
  * @type {BuildOptions}
  */
 const esbuildOptions = {
+  publicPath: "/bouldercodencoffee.github.io/_bridgetown/static",
   plugins: [
     // add new plugins here...
   ],
