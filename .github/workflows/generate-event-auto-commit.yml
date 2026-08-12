@@ -23,6 +23,7 @@ jobs:
     outputs:
       event_file: ${{ steps.generate.outputs.event_file }}
       event_date: ${{ steps.generate.outputs.event_date }}
+      commit_sha: ${{ steps.commit.outputs.sha }}
     env:
       AI_PROVIDER: ${{ vars.AI_PROVIDER }}
       AI_MODEL: ${{ vars.AI_MODEL }}
@@ -43,6 +44,7 @@ jobs:
         run: ruby script/generate_event.rb --mode=direct
 
       - name: Commit and push
+        id: commit
         if: steps.generate.outputs.event_file != ''
         env:
           EVENT_DATE: ${{ steps.generate.outputs.event_date }}
@@ -53,11 +55,14 @@ jobs:
           git diff --cached --quiet && exit 0
           git commit -m "Add upcoming event page ($EVENT_DATE)"
           git push
+          echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
 
   deploy:
     needs: generate-event-auto-commit
     if: needs.generate-event-auto-commit.outputs.event_file != ''
     uses: ./.github/workflows/gh-pages.yml
+    with:
+      ref: ${{ needs.generate-event-auto-commit.outputs.commit_sha }}
 
   post:
     needs: [generate-event-auto-commit, deploy]
