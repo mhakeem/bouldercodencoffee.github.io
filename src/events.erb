@@ -1,17 +1,46 @@
 ---
-layout: page
+layout: default
 title: Events
+paginate:
+  collection: events
+  per_page: 10
+  sort_field: date
+  sort_reverse: true
 ---
 
-<ul>
-  <% collections.events.resources.each do |event| %>
-    <li>
-      <div class="mb-0"><a class="no-underline text-lg" href="<%= event.relative_url %>"><%= event.data.title %></a></div>
-      <div class="-mt-2">
-        <span class="text-gray-600 text-xs">Posted on <%= event.date.strftime("%B %d, %Y") %></span>
-      </div>
-    </li>
-  <% end %>
-</ul>
+<div class="container mx-auto px-4 py-16 max-w-3xl">
+  <h1 class="text-3xl font-bold font-display mb-8 text-coffee dark:text-coffee-light">Events</h1>
 
-<!--If you have a lot of events, you may want to consider adding [pagination](https://www.bridgetownrb.com/docs/content/pagination)!-->
+  <div class="space-y-4">
+    <% paginator.resources.each do |event| %>
+      <a href="<%= event.relative_url %>" class="block bg-white dark:bg-gray-800 shadow-md hover:shadow-lg rounded-lg p-6 transition duration-300">
+        <div class="flex items-center justify-between gap-4">
+          <div>
+            <h2 class="text-xl font-bold text-coffee dark:text-coffee-light"><%= event.data.title %></h2>
+            <div class="text-gray-600 dark:text-gray-400 text-sm mt-1">
+              <i class="far fa-calendar mr-2 text-code"></i><%= event.data.meeting_date.strftime("%B %d, %Y") %>
+              <i class="fas fa-map-marker-alt ml-4 mr-2 text-code"></i><%= event.data.location %>
+            </div>
+          </div>
+          <span class="text-gray-400 dark:text-gray-500 text-xs whitespace-nowrap">Posted <%= event.date.strftime("%b %d, %Y") %></span>
+        </div>
+      </a>
+    <% end %>
+  </div>
+
+  <% if paginator.total_pages > 1 %>
+    <div class="flex justify-between items-center mt-8">
+      <% if paginator.previous_page %>
+        <a href="<%= paginator.previous_page_path %>" class="text-code hover:text-code-dark font-bold transition duration-300">&larr; Newer</a>
+      <% else %>
+        <span></span>
+      <% end %>
+      <span class="text-gray-500 dark:text-gray-400 text-sm">Page <%= paginator.page %> of <%= paginator.total_pages %></span>
+      <% if paginator.next_page %>
+        <a href="<%= paginator.next_page_path %>" class="text-code hover:text-code-dark font-bold transition duration-300">Older &rarr;</a>
+      <% else %>
+        <span></span>
+      <% end %>
+    </div>
+  <% end %>
+</div>

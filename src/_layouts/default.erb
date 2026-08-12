@@ -4,7 +4,7 @@
     <%= render "head", metadata: site.metadata, title: data.title %>
     <%= feed_meta %>
   </head>
-  <body class="min-h-screen bg-gray-50 flex flex-col font-sans">
+  <body class="min-h-screen bg-gray-50 dark:bg-gray-900 flex flex-col font-sans transition duration-300">
     <%= render Shared::Navbar.new(metadata: site.metadata, resource: resource) %>
 
     <main class="flex-grow">
