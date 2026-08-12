@@ -2,13 +2,10 @@
 output
 .bridgetown-cache
 .bridgetown-metadata
-.bridgetown-webpack
 .routes.json
 
 # Dependency folders
 node_modules
-bower_components
-vendor
 
 # Caches
 .sass-cache
@@ -35,4 +32,21 @@ yarn-debug.log*
 # Yarn Integrity file
 .yarn-integrity
 
+# Ignore all tempfiles.
+/tmp/*
+!/tmp/.keep
+
+# Ignore pidfiles, but keep the directory.
+/tmp/pids/*
+!/tmp/pids/
+!/tmp/pids/.keep
+
 frontend/styles/jit-refresh.css
+
+mise.toml
+.vscode
+
+.codegpt
+
+# Raw ICS dumps fetched while building test fixtures — not meant to be committed
+test/fixtures/rayback_raw.ics
