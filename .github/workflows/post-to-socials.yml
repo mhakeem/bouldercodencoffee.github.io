@@ -25,7 +25,7 @@ permissions:
 
 jobs:
   post-to-socials:
-    if: github.event_name == 'workflow_call' || github.event.workflow_run.conclusion == 'success'
+    if: inputs.event_file != '' || github.event.workflow_run.conclusion == 'success'
     runs-on: ubuntu-latest
     env:
       SLACK_API_TOKEN: ${{ secrets.SLACK_API_TOKEN }}
