@@ -1,5 +1,6 @@
 source "https://rubygems.org"
-git_source(:github) { |repo| "https://github.com/#{repo}.git" }
+git_source(:github) { "https://github.com/#{_1}.git" }
+git_source(:codeberg) { "https://codeberg.org/#{_1}.git" }
 
 ####
 # Welcome to your project's Gemfile, used by Rubygems & Bundler.
@@ -19,14 +20,14 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 # If you need to upgrade/switch Bridgetown versions, change the line below
 # and then run `bundle update bridgetown`
-gem "bridgetown", "~> 1.3.4"
+gem "bridgetown", "~> 2.2"
 
 # Uncomment to add file-based dynamic routing to your project:
-# gem "bridgetown-routes", "~> 1.3.4"
+# gem "bridgetown-routes", "~> 2.2"
 
-# Puma is the Rack-compatible web server used by Bridgetown
+# Falcon is the Rack-compatible web server used by Bridgetown
 # (you can optionally limit this to the "development" group)
-gem "puma", "< 7"
+gem "falcon", "~> 0.57"
 
 # Uncomment to use the Inspectors API to manipulate the output
 # of your HTML or XML resources:
@@ -35,7 +36,7 @@ gem "puma", "< 7"
 # Or for faster parsing of HTML-only resources via Inspectors, use Nokolexbor:
 # gem "nokolexbor", "~> 0.4"
 
-gem "bridgetown-feed", "~> 3.1"
+gem "bridgetown-feed", "~> 4.0"
 
 # Used by script/ automation (event generation + social media posting), not the site itself
 gem "icalendar", "~> 2.10"
