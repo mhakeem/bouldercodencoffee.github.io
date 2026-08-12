@@ -69,4 +69,5 @@ jobs:
     uses: ./.github/workflows/post-to-socials.yml
     with:
       event_file: ${{ needs.generate-event-auto-commit.outputs.event_file }}
+      ref: ${{ needs.generate-event-auto-commit.outputs.commit_sha }}
     secrets: inherit
