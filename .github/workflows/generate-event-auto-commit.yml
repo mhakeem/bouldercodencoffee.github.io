@@ -10,7 +10,7 @@ name: Generate event (auto-commit)
 on:
   workflow_dispatch: {}
   schedule:
-    - cron: "0 18 * * 2" # Tuesdays, noon MDT / 11am MST (cron can't follow DST)
+    - cron: "0 18 * * 4" # TEMP: Thursdays for testing — revert to "0 18 * * 2" (Tuesdays) once confirmed working
 
 permissions:
   contents: write
