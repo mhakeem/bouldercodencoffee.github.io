@@ -19,6 +19,9 @@ on:
       event_file:
         required: false
         type: string
+      ref:
+        required: false
+        type: string
 
 permissions:
   contents: read
@@ -35,7 +38,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: ${{ github.event.workflow_run.head_sha || github.sha }}
+          ref: ${{ github.event.workflow_run.head_sha || inputs.ref || github.sha }}
           fetch-depth: 2
 
       - name: Set up Ruby
