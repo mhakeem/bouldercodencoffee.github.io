@@ -7,3 +7,4 @@ import components from "$components/**/*.{js,jsx,js.rb,css}";
 console.info("Bridgetown is loaded!");
 
 import "./mobile-menu";
+import "./dark-mode";

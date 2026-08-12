@@ -9,20 +9,20 @@ paginate:
 ---
 
 <div class="container mx-auto px-4 py-16 max-w-3xl">
-  <h1 class="text-3xl font-bold font-display mb-8 text-coffee">Events</h1>
+  <h1 class="text-3xl font-bold font-display mb-8 text-coffee dark:text-coffee-light">Events</h1>
 
   <div class="space-y-4">
     <% paginator.resources.each do |event| %>
-      <a href="<%= event.relative_url %>" class="block bg-white shadow-md hover:shadow-lg rounded-lg p-6 transition duration-300">
+      <a href="<%= event.relative_url %>" class="block bg-white dark:bg-gray-800 shadow-md hover:shadow-lg rounded-lg p-6 transition duration-300">
         <div class="flex items-center justify-between gap-4">
           <div>
-            <h2 class="text-xl font-bold text-coffee"><%= event.data.title %></h2>
-            <div class="text-gray-600 text-sm mt-1">
+            <h2 class="text-xl font-bold text-coffee dark:text-coffee-light"><%= event.data.title %></h2>
+            <div class="text-gray-600 dark:text-gray-400 text-sm mt-1">
               <i class="far fa-calendar mr-2 text-code"></i><%= event.data.meeting_date.strftime("%B %d, %Y") %>
               <i class="fas fa-map-marker-alt ml-4 mr-2 text-code"></i><%= event.data.location %>
             </div>
           </div>
-          <span class="text-gray-400 text-xs whitespace-nowrap">Posted <%= event.date.strftime("%b %d, %Y") %></span>
+          <span class="text-gray-400 dark:text-gray-500 text-xs whitespace-nowrap">Posted <%= event.date.strftime("%b %d, %Y") %></span>
         </div>
       </a>
     <% end %>
@@ -35,7 +35,7 @@ paginate:
       <% else %>
         <span></span>
       <% end %>
-      <span class="text-gray-500 text-sm">Page <%= paginator.page %> of <%= paginator.total_pages %></span>
+      <span class="text-gray-500 dark:text-gray-400 text-sm">Page <%= paginator.page %> of <%= paginator.total_pages %></span>
       <% if paginator.next_page %>
         <a href="<%= paginator.next_page_path %>" class="text-code hover:text-code-dark font-bold transition duration-300">Older &rarr;</a>
       <% else %>
