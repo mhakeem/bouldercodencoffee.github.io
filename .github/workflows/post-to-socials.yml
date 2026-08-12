@@ -2,18 +2,30 @@ name: Post to socials
 
 # Runs after the site has deployed. If the deployed commit added or changed
 # an event page, posts that page's `social_post` frontmatter to Mastodon + Slack.
+#
+# Two ways in:
+# - workflow_run, for organic pushes to master (e.g. a manually-edited event
+#   page) — diffs the deployed commit to find which event page(s) changed.
+# - workflow_call, for the generate-event-auto-commit.yml pipeline, which
+#   already knows exactly which file it generated and passes it directly via
+#   the `event_file` input, skipping the diff entirely.
 
 on:
   workflow_run:
     workflows: ["Deploy to GitHub pages"]
     types: [completed]
+  workflow_call:
+    inputs:
+      event_file:
+        required: false
+        type: string
 
 permissions:
   contents: read
 
 jobs:
   post-to-socials:
-    if: github.event.workflow_run.conclusion == 'success'
+    if: github.event_name == 'workflow_call' || github.event.workflow_run.conclusion == 'success'
     runs-on: ubuntu-latest
     env:
       SLACK_API_TOKEN: ${{ secrets.SLACK_API_TOKEN }}
@@ -23,7 +35,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: ${{ github.event.workflow_run.head_sha }}
+          ref: ${{ github.event.workflow_run.head_sha || github.sha }}
           fetch-depth: 2
 
       - name: Set up Ruby
@@ -32,6 +44,7 @@ jobs:
           bundler-cache: true
 
       - name: Find changed event pages
+        if: inputs.event_file == ''
         id: changed
         run: |
           files=$(git diff --name-only HEAD~1 HEAD -- 'src/_events/*.md' || true)
@@ -40,7 +53,13 @@ jobs:
           echo "EOF" >> "$GITHUB_OUTPUT"
 
       - name: Post to Mastodon + Slack
-        if: steps.changed.outputs.files != ''
+        if: inputs.event_file != ''
+        env:
+          EVENT_FILE: ${{ inputs.event_file }}
+        run: ruby script/publish_social_post.rb "$EVENT_FILE"
+
+      - name: Post to Mastodon + Slack (diffed files)
+        if: inputs.event_file == '' && steps.changed.outputs.files != ''
         run: |
           echo "${{ steps.changed.outputs.files }}" | while IFS= read -r file; do
             [ -n "$file" ] && ruby script/publish_social_post.rb "$file"
