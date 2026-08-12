@@ -2,8 +2,10 @@ name: Generate event (auto-commit)
 
 # Fully-automatic alternative to generate-event-pr.yml — commits the
 # generated event page (with its social_post frontmatter) straight to
-# master, which kicks off gh-pages.yml to deploy it, then post-to-socials.yml
-# posts to Mastodon + Slack once that deploy succeeds.
+# master, then calls gh-pages.yml and post-to-socials.yml directly as
+# reusable jobs (rather than relying on push/workflow_run events) since a
+# GITHUB_TOKEN-authored push here does not trigger other workflows' push
+# listeners.
 
 on:
   workflow_dispatch: {}
@@ -12,10 +14,15 @@ on:
 
 permissions:
   contents: write
+  pages: write
+  id-token: write
 
 jobs:
   generate-event-auto-commit:
     runs-on: ubuntu-latest
+    outputs:
+      event_file: ${{ steps.generate.outputs.event_file }}
+      event_date: ${{ steps.generate.outputs.event_date }}
     env:
       AI_PROVIDER: ${{ vars.AI_PROVIDER }}
       AI_MODEL: ${{ vars.AI_MODEL }}
@@ -46,3 +53,15 @@ jobs:
           git diff --cached --quiet && exit 0
           git commit -m "Add upcoming event page ($EVENT_DATE)"
           git push
+
+  deploy:
+    needs: generate-event-auto-commit
+    if: needs.generate-event-auto-commit.outputs.event_file != ''
+    uses: ./.github/workflows/gh-pages.yml
+
+  post:
+    needs: [generate-event-auto-commit, deploy]
+    uses: ./.github/workflows/post-to-socials.yml
+    with:
+      event_file: ${{ needs.generate-event-auto-commit.outputs.event_file }}
+    secrets: inherit
