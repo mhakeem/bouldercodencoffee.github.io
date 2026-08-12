@@ -12,7 +12,7 @@ on:
       - "tailwind.config.js"
       - "postcss.config.js"
       - "package.json"
-      - "yarn.lock"
+      - "package-lock.json"
       - "Gemfile.lock"
   workflow_call:
     inputs:
@@ -41,8 +41,8 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: "24"
-          cache: "yarn"
-      - run: yarn install
+          cache: "npm"
+      - run: npm ci
 
       - name: Build
         env:
