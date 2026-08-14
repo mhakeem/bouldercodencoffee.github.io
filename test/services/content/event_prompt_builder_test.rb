@@ -47,7 +47,7 @@ class EventPromptBuilderTest < Minitest::Test
     prompt = EventPromptBuilder.new(@event).build
 
     assert_includes prompt, "Never use an em dash"
-    assert_includes prompt, "do NOT add a punny"
+    assert_includes prompt, "don't do this by default"
   end
 
   def test_prompt_for_cancelled_event_asks_for_a_cancellation_announcement
